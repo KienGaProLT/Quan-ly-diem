@@ -4,7 +4,7 @@ class Database_ql_diem
 {
     private static $hostname = "db";
     private static $username = "root";
-    private static $password = "";
+    private static $password = "root";
     private static $database = "ql_diem"; // Tên database của bạn
     protected static $conn = NULL;
     
