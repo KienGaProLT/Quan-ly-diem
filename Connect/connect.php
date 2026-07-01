@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class Database_ql_diem
 {
@@ -7,19 +7,20 @@ class Database_ql_diem
     private static $password = "root";
     private static $database = "ql_diem"; // Tên database của bạn
     protected static $conn = NULL;
-    
+
     // Hàm kết nối Database
     public static function Connect()
     {
-        // Sử dụng mysqli theo hướng đối tượng để đồng bộ với các hàm bên dưới
-        self::$conn = new mysqli(self::$hostname, self::$username, self::$password, self::$database);
-
-        if (self::$conn->connect_error) {
-            die("Kết nối database thất bại: " . self::$conn->connect_error);
-        } else {
-            // Đảm bảo dữ liệu tiếng Việt hiển thị đúng
-            self::$conn->set_charset('utf8');
+        // Thử kết nối tối đa 5 lần, mỗi lần đợi 2 giây nếu chưa được
+        for ($i = 0; $i < 5; $i++) {
+            self::$conn = new mysqli(self::$hostname, self::$username, self::$password, self::$database);
+            if (!self::$conn->connect_error) {
+                self::$conn->set_charset('utf8');
+                return; // Kết nối thành công, thoát hàm
+            }
+            sleep(2); // Đợi database khởi động
         }
+        die("Kết nối database thất bại sau nhiều lần thử: " . self::$conn->connect_error);
     }
 
     // Hàm thực thi câu lệnh SQL (INSERT, UPDATE, DELETE)
@@ -30,7 +31,7 @@ class Database_ql_diem
             self::Connect();
         }
         return self::$conn->query($sql);
-    }   
+    }
 
     // Hàm lấy dữ liệu (SELECT) trả về mảng
     public static function Getdata($sql)
@@ -45,7 +46,7 @@ class Database_ql_diem
             }
         }
         // Trả về mảng (dù có dữ liệu hay rỗng), giúp trang Cài đặt không bị sập
-        return $arr; 
+        return $arr;
     }
 
     // --- Các hàm hỗ trợ tính toán và hiển thị điểm ---
@@ -80,4 +81,3 @@ class Database_ql_diem
         return "Yếu";
     }
 }
-?>
