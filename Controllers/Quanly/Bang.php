@@ -402,7 +402,7 @@ switch ($action) {
         // Gọi API thay vì gọi Model trực tiếp
         // Nếu chọn lớp cụ thể, truyền thêm param maLop vào API (nếu bạn đã viết API lọc)
         // Ở đây mình gọi API lấy danh sách tổng trước:
-        $url = "http://localhost/Quan_ly_diem/api/get_sinhvien.php";
+        $url = "http://web/api/get_sinhvien.php";
         $res = callAPI($url, null);
 
         if ($res && $res['status'] == "success") {
