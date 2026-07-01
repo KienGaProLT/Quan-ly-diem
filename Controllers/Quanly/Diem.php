@@ -167,7 +167,7 @@ switch ($action) {
 $mon_post = !empty($_POST['sellist2']) ? $_POST['sellist2'] : $maMon_ready;
 
                 // --- ĐOẠN CẬP NHẬT GỌI API CHO POST_DIEM ---
-                $url = "http://localhost/Quan_ly_diem/api/post_diem.php";
+                $url = "http://web/api/post_diem.php";
                 $payload = array(
                     "ma_sv" => $sv_post,
                     "ma_mon" => $mon_post,
@@ -196,7 +196,7 @@ $mon_post = !empty($_POST['sellist2']) ? $_POST['sellist2'] : $maMon_ready;
 
         if (isset($_POST['suaDiem'])) {
             // --- ĐOẠN GỌI API EDIT ---
-            $url = "http://localhost/Quan_ly_diem/api/edit_diem.php";
+            $url = "http://web/api/edit_diem.php";
             $payload = [
                 "ma_sv" => $text_masv,
                 "ma_mon" => $text_mamon,
@@ -225,7 +225,7 @@ $mon_post = !empty($_POST['sellist2']) ? $_POST['sellist2'] : $maMon_ready;
         $maMon_del = $_GET['maMon'];
 
         // --- ĐOẠN GỌI API DELETE ---
-        $url = "http://localhost/Quan_ly_diem/api/delete_diem.php";
+        $url = "http://web/api/delete_diem.php";
         $payload = [
             "ma_sv" => $maSV_del,
             "ma_mon" => $maMon_del
