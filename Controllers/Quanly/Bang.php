@@ -130,7 +130,7 @@ switch ($action) {
 
     // xử lý học kỳ
     case 'list_hocky':
-        $url = "http://localhost/Quan_ly_diem/api/get_hocky.php";
+        $url = "http://web/api/get_hocky.php";
         $res = callAPI($url, null);
         $listhocky = ($res && isset($res['status']) && $res['status'] == "success") ? $res['data'] : [];
 
@@ -143,7 +143,7 @@ switch ($action) {
                 'mahocky' => $_POST['txt_mahocky'],
                 'tenhocky' => $_POST['txt_tenhocky']
             ];
-            $url = "http://localhost/Quan_ly_diem/api/add_hocky.php";
+            $url = "http://web/api/add_hocky.php";
             $res = callAPI($url, $data);
 
             if ($res && isset($res['status']) && $res['status'] == "success") {
@@ -166,7 +166,7 @@ switch ($action) {
                     'tenhocky' => $_POST['txt_tenhocky'],
                     'mahocky_old' => $maHocky
                 ];
-                $url = "http://localhost/Quan_ly_diem/api/edit_hocky.php";
+                $url = "http://web/api/edit_hocky.php";
                 $res = callAPI($url, $data);
 
                 if ($res && isset($res['status']) && $res['status'] == "success") {
@@ -182,7 +182,7 @@ switch ($action) {
     case 'Delete_hocky':
         if (isset($_GET['maHocky'])) {
             $data = ['maHocky' => $_GET['maHocky']];
-            $url = "http://localhost/Quan_ly_diem/api/delete_hocky.php";
+            $url = "http://web/api/delete_hocky.php";
             $res = callAPI($url, $data);
 
             if ($res && isset($res['status']) && $res['status'] == "success") {
