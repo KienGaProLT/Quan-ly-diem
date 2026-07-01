@@ -15,7 +15,7 @@ function callAPI($url, $data)
 }
 
 // Chỉnh lại tên folder cho đúng máy bạn
-$api_url = "http://localhost/Quan_ly_diem/api/login.php";
+$api_url = "http://web/api/login.php";
 $action = isset($_GET['action']) ? $_GET['action'] : NULL;
 
 switch ($action) {
@@ -81,7 +81,7 @@ switch ($action) {
                 ];
 
                 // Địa chỉ URL đến file API quên mật khẩu
-                $forgot_api_url = "http://localhost/Quan_ly_diem/api/forgot_password.php";
+                $forgot_api_url = "http://web/api/forgot_password.php";
                 
                 // Gọi API bằng hàm callAPI có sẵn đầu file của bạn
                 $result = callAPI($forgot_api_url, $forgotData);
