@@ -47,7 +47,7 @@ switch ($action) {
             $list_sv = Sinhvien::Search($gtTimkiem);
         } else {
             // Gọi lại API tổng đã chạy ngon
-            $url = "http://localhost/Quan_ly_diem/api/get_sinhvien.php";
+            $url = "http://web/api/get_sinhvien.php";
             $res = callAPI($url, null);
             $list_sv = ($res['status'] == "success") ? $res['data'] : [];
         }
@@ -56,7 +56,7 @@ switch ($action) {
 
     // xử lý lớp
     case 'List_lop':
-        $url = "http://localhost/Quan_ly_diem/api/get_lop.php";
+        $url = "http://web/api/get_lop.php";
         $res = callAPI($url, null);
         $listlop = ($res && isset($res['status']) && $res['status'] == "success") ? $res['data'] : [];
 
@@ -70,7 +70,7 @@ switch ($action) {
                 'malop' => $_POST['txt_malop'],
                 'tenlop' => $_POST['txt_tenlop']
             ];
-            $url = "http://localhost/Quan_ly_diem/api/add_lop.php";
+            $url = "http://web/api/add_lop.php";
 
             // Gọi hàm callAPI gốc (tự động dùng POST)
             $res = callAPI($url, $data);
@@ -96,7 +96,7 @@ switch ($action) {
                     'tenlop' => $_POST['txt_tenlop'],
                     'malop_old' => $maLop
                 ];
-                $url = "http://localhost/Quan_ly_diem/api/edit_lop.php";
+                $url = "http://web/api/edit_lop.php";
 
                 // Gọi hàm callAPI gốc
                 $res = callAPI($url, $data);
@@ -114,7 +114,7 @@ switch ($action) {
     case 'Delete_lop':
         if (isset($_GET['maLop'])) {
             $data = ['maLop' => $_GET['maLop']];
-            $url = "http://localhost/Quan_ly_diem/api/delete_lop.php";
+            $url = "http://web/api/delete_lop.php";
 
             // Gọi hàm callAPI gốc
             $res = callAPI($url, $data);
