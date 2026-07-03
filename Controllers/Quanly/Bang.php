@@ -194,7 +194,7 @@ switch ($action) {
         break;
     // XỬ LÝ HỌC PHẦN (ĐÃ CẬP NHẬT THEO LỚP)
     case 'list_hocphan':
-        $url = "http://localhost/Quan_ly_diem/api/get_hocphan.php";
+        $url = "http://web/api/get_hocphan.php";
         $res = callAPI($url, null);
 
         $listhocphan = ($res && isset($res['status']) && $res['status'] == "success")
@@ -219,7 +219,7 @@ switch ($action) {
                 'maLop' => $_POST['sellist_lop']
             ];
 
-            $url = "http://localhost/Quan_ly_diem/api/add_hocphan.php";
+            $url = "http://web/api/add_hocphan.php";
 
             // Gọi API
             $res = callAPI($url, $data);
@@ -263,7 +263,7 @@ switch ($action) {
                     'maHocphan_old' => $maMon
                 ];
 
-                $url = "http://localhost/Quan_ly_diem/api/sua_hocphan.php";
+                $url = "http://web/api/sua_hocphan.php";
 
                 // Gọi API
                 $res = callAPI($url, $data);
@@ -292,7 +292,7 @@ switch ($action) {
                 'maHocphan' => $_GET['maMon']
             ];
 
-            $url = "http://localhost/Quan_ly_diem/api/xoa_hocphan.php";
+            $url = "http://web/api/xoa_hocphan.php";
 
             // Gọi API
             $res = callAPI($url, $data);
